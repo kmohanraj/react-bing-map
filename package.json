@@ -13,12 +13,22 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "build:watch": "rollup -c --watch"
+    "build:watch": "rollup -c --watch",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.2",
+    "@storybook/addon-essentials": "^7.2.0",
+    "@storybook/addon-interactions": "^7.2.0",
+    "@storybook/addon-links": "^7.2.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.2.0",
+    "@storybook/react": "^7.2.0",
+    "@storybook/react-vite": "^7.2.0",
+    "@storybook/testing-library": "^0.2.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "node-sass": "^9.0.0",
@@ -29,6 +39,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.63.6",
+    "storybook": "^7.2.0",
     "tslib": "^2.6.0",
     "typescript": "^5.1.6"
   },

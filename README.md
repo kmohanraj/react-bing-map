@@ -12,3 +12,8 @@ npm install --save-dev @rollup/plugin-commonjs @rollup/plugin-node-resolve @roll
 ```
 npm run build
 ```
+
+#### Run Story Book
+```
+npm run storybook
+```
