@@ -131,7 +131,9 @@ const meta: any = {
   },
   tags: ['autodocs'],
   argTypes: {
-    mapType: { control: 'text' }
+    mapType: { control: 'select', options: ['aerial', 'canvasDark', 'canvasLight', 'birdseye', 'grayscale', 'mercator', 'ordnanceSurvey', 'road', 'streetside'] },
+    zoom: { control: { type: 'range', min: 1, max: 19 }},
+    language: { control: 'select', options: ['en-IN', 'hi-IN']}
   },
 } satisfies Meta<typeof MapView>;
 
@@ -170,30 +172,5 @@ export const Map_View: Story = {
   }
 };
 
-export const MapType_Grayscale: Story = {
-  args: {
-    bingKey: "At_TFr8hNlThvFzAb11QIIVHCWa6B0RrvlZ2BbiE2TKi6DS9x4q_Y74iZHibnToj",
-    mapType: 'grayscale',
-    Zoom: 1,
-    centerLocation: [28.6448, 77.216721],
-    pushPins: pushpins,
-    showScalebar: true,
-    showCopyright: true,
-    showLogo: true,
-  }
-};
-
-export const MapType_Road: Story = {
-  args: {
-    bingKey: "At_TFr8hNlThvFzAb11QIIVHCWa6B0RrvlZ2BbiE2TKi6DS9x4q_Y74iZHibnToj",
-    mapType: 'road',
-    Zoom: 1,
-    centerLocation: [28.6448, 77.216721],
-    pushPins: pushpins,
-    showScalebar: true,
-    showCopyright: true,
-    showLogo: true,
-  }
-};
 
 

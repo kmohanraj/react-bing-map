@@ -1,30 +1,15 @@
 import React, { useEffect } from 'react';
-import useBingMaps, { TMapView } from '../../hooks/useBingMaps';
+import useBingMaps from '../../hooks/useBingMaps';
+import { TMapView } from '../../type/component.type';
 // const logo: string = require("../assets/legend-f.svg");
 // import * as logo from 'logo.svg'
 // const logo = require("../../assets/legend-f.svg") as string;
-
-interface MapProps {
-  mapType?: string;
-  bingKey?: string;
-  centerLocation?: [number, number];
-  zoom: number;
-  pushPins: [];
-  pushPinIcon: string;
-  showScalebar: boolean;
-  showCopyright: boolean;
-  showLogo: boolean;
-  disableZooming: boolean;
-  showBreadcrumb: boolean;
-  showLocateMeButton: boolean;
-  showZoomButtons: boolean;
-  showMapTypeSelector: boolean;
-}
 
 export const MapView = ({
   mapType = '',
   bingKey = '',
   centerLocation = [0, 0],
+  language = 'en-IN',
   zoom = 0,
   pushPins = [],
   pushPinIcon = '',
@@ -36,15 +21,16 @@ export const MapView = ({
   showLocateMeButton = true,
   showZoomButtons = true,
   showMapTypeSelector = true
-}: MapProps) => {
+}: TMapView) => {
 
   const mapView: TMapView = {
     mapType: mapType,
     bingKey: bingKey,
     centerLocation: centerLocation,
+    language: language,
     zoom: zoom,
     pushPins: pushPins,
-    pushPinIcon: pushPinIcon ?? pushPinIcon,
+    pushPinIcon: pushPinIcon,
     showScalebar: showScalebar,
     showCopyright: showCopyright,
     showLogo: showLogo,
@@ -61,7 +47,7 @@ export const MapView = ({
     if (!document.querySelector('[data-bing="true"]')) {
       const scriptTag = document.createElement('script');
       scriptTag.src =
-        'https://www.bing.com/api/maps/mapcontrol?callback=initMap';
+        `https://www.bing.com/api/maps/mapcontrol?callback=initMap&setLang=${language}`;
       scriptTag.async = true;
       scriptTag.dataset.bing = 'true';
       document.body.appendChild(scriptTag);

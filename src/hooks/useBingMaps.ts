@@ -1,41 +1,5 @@
 import { useCallback } from 'react';
-
-type DescriptionType = {
-  name: string;
-};
-
-type ContentType = {
-  title: string;
-  description: DescriptionType;
-};
-
-type IContent = {
-  title: string;
-  description: DescriptionType;
-};
-
-type TPushPin = {
-  icon: string;
-  center: {};
-  content: IContent;
-};
-
-export type TMapView = {
-  mapType?: string;
-  bingKey: string;
-  centerLocation?: [number, number];
-  zoom?: number;
-  pushPins?: [];
-  pushPinIcon?: any;
-  showScalebar?: boolean;
-  showCopyright?: boolean;
-  showLogo?: boolean;
-  disableZooming?: boolean;
-  showBreadcrumb?: boolean;
-  showLocateMeButton: boolean,
-  showZoomButtons?: boolean;
-  showMapTypeSelector?: boolean;
-};
+import { TPushPin, ContentType } from '../type/component.type';
 
 const useBingMaps = ({
   mapType = '',
@@ -126,7 +90,6 @@ const useBingMaps = ({
     });
     map.entities.push(pin);
     const zoomLevel = getZoomLevel(100, map.getCenter().latitude, 350, 250);
-    console.log('----zoom-level', zoomLevel, zoom)
     map.setView({
       center: center,
       zoom: zoom ? zoom : zoomLevel,
