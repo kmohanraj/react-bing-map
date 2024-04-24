@@ -21,4 +21,4 @@ npm run storybook
 
 #### Output:
 
-![screenshot](/Users/mohanraj_k1/Desktop/Screenshot 2024-04-25 at 12.26.13 AM.png)
+![screenshot](/output.png)
