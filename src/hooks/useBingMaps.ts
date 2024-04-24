@@ -1,33 +1,5 @@
-import { useState, FC, useCallback, useEffect } from 'react';
-
-type DescriptionType = {
-  name: string;
-};
-
-type ContentType = {
-  title: string;
-  description: DescriptionType;
-};
-
-type IContent = {
-  title: string;
-  description: DescriptionType;
-};
-
-type TPushPin = {
-  icon: string;
-  center: {};
-  content: IContent;
-};
-
-export type TMapView = {
-  mapType?: string;
-  bingKey: string;
-  centerLocation?: [number, number];
-  zoom?: number;
-  pushPins?: [];
-  pushPinIcon?: any;
-};
+import { useCallback } from 'react';
+import { TPushPin, ContentType } from '../type/component.type';
 
 const useBingMaps = ({
   mapType = '',
@@ -35,39 +7,78 @@ const useBingMaps = ({
   centerLocation = [0, 0],
   zoom = 0,
   pushPins = [],
-  pushPinIcon = ''
+  pushPinIcon = '',
+  showScalebar = true,
+  showCopyright = true,
+  showLogo = true,
+  disableZooming = false,
+  showBreadcrumb = true,
+  showLocateMeButton = true,
+  showZoomButtons = true,
+  showMapTypeSelector = true
 }): [any, any] => {
+
+  const CONFIG = {
+    NORTH: 49.234,
+    SOUTH: 24.175,
+    EAST: -65.573,
+    WEST: -125.778,
+    ZOOM: 3
+  };
+
   let myWindow = window as any;
+
   const initMap = useCallback(() => {
     let Maps = myWindow.Microsoft.Maps;
-    var map = new Maps.Map('#bing-map', {
+    const center = new Maps.Location(centerLocation[0], centerLocation[1]);
+    let map = new Maps.Map('#bing-map', {
       credentials: bingKey,
-      center: new Maps.Location(centerLocation[0], centerLocation[1]),
+      center: center,
+      bounds: Maps.LocationRect.fromEdges(
+        CONFIG.NORTH,
+        CONFIG.WEST,
+        CONFIG.SOUTH,
+        CONFIG.EAST
+      ),
       mapTypeId: Maps.MapTypeId[mapType],
-      showLogo: false,
-      zoom: Number(zoom)
+      zoom: zoom,
+      showScalebar: showScalebar,
+      showCopyright: showCopyright,
+      showLogo: showLogo,
+      disableZooming: disableZooming,
+      showBreadcrumb: showBreadcrumb,
+      showLocateMeButton: showLocateMeButton,
+      showZoomButtons: showZoomButtons,
+      showMapTypeSelector: showMapTypeSelector
     });
     let infoBox = new Maps.Infobox(map.getCenter(), {
       visible: false
     });
     infoBox.setMap(map);
-    addPushPins(map, infoBox, Maps);
-  }, []);
+    addPushPins(center, infoBox, map, Maps, pushPins);
+  }, [pushPins]);
 
-  const addPushPins = (map: any, infoBox: any, Maps: any) => {
-    for (let ele in pushPins) {
-      let pin = new Maps.Pushpin(centerLocation, pushPinIcon);
-      const data: ContentType = pushPins[ele]['content'];
-      handleOnInfoBox(map, pin, infoBox, data, Maps);
-    }
+  const addPushPins = (
+    center: any,
+    infoBox: any,
+    map: any,
+    Maps: any,
+    pushPins: any
+  ) => {
+    pushPins.forEach((item: TPushPin) => {
+      let pin = new Maps.Pushpin(item.center, null);
+      const data: ContentType = item.content;
+      handleOnInfoBox(center, data, infoBox, map, Maps, pin);
+    });
   };
 
   const handleOnInfoBox = (
-    map: any,
-    pin: any,
-    infoBox: any,
+    center: any,
     data: ContentType,
-    Maps: any
+    infoBox: any,
+    map: any,
+    Maps: any,
+    pin: any
   ) => {
     Maps.Events.addHandler(pin, 'click', (e: any) => {
       infoBox.setOptions({
@@ -80,8 +91,8 @@ const useBingMaps = ({
     map.entities.push(pin);
     const zoomLevel = getZoomLevel(100, map.getCenter().latitude, 350, 250);
     map.setView({
-      center: centerLocation,
-      zoom: zoomLevel,
+      center: center,
+      zoom: zoom ? zoom : zoomLevel,
       padding: 100,
       strokeOpacity: 0.6
     });
