@@ -1,9 +1,27 @@
 {
-  "name": "react-core",
-  "version": "1.0.0",
-  "author": "Mohanraj K",
-  "license": "ISC",
+  "name": "react-bing-map",
   "description": "",
+  "author": {
+    "name": "Mohanraj Kandasamy",
+    "email": "mohanksv.89@gmail.com",
+    "url": "https://github.com/kmohanraj"
+  },
+  "keywords": [
+    "bing",
+    "maps",
+    "bingmaps",
+    "bing maps",
+    "react bing maps",
+    "typescript",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmohanraj/react-bing-maps"
+  },
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
@@ -43,13 +61,6 @@
     "tslib": "^2.6.0",
     "typescript": "^5.1.6"
   },
-  "keywords": [
-    "react-template",
-    "react-library",
-    "typescript",
-    "react",
-    "template"
-  ],
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18"

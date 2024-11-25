@@ -1,22 +1,50 @@
-## React Rollup Boiler Plate
+## React - Bing Maps
 
-#### Install the dependencies
 
-```
-npm install --save-dev @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/plugin-typescript @types/react @types/react-dom react react-dom rollup rollup-plugin-peer-deps-external typescript node-sass sass postcss rollup-plugin-postcss
+## Prerequisites
 
-```
+To fully utilize this component, you need a Bing Maps API key, which can be obtained from the [Bing Maps Dev Center](https://www.bingmapsportal.com).
 
-#### Run Build
+## Installation
 
 ```
-npm run build
+yarn add react-bing-map
+
+OR
+
+npm i react-bing-map
 ```
 
-#### Run Story Book
+## Usage
+
+#### Import the BingMapsReact component.
+
+Import the Bing Maps component
 
 ```
-npm run storybook
+import MapView from "react-bing-map";
+```
+
+#### Customized Example:
+
+```
+<MapView
+  mapType = '',
+  bingKey = '',
+  centerLocation = [0, 0],
+  language = 'en-IN',
+  zoom = 0,
+  pushPins = [],
+  pushPinIcon = '',
+  showScalebar = true,
+  showCopyright = true,
+  showLogo = true,
+  disableZooming = false,
+  showBreadcrumb = true,
+  showLocateMeButton = true,
+  showZoomButtons = true,
+  showMapTypeSelector = true
+/>
 ```
 
 #### Output:
