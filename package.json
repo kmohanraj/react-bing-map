@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/kmohanraj/react-bing-maps"
   },
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": false,
   "license": "MIT",
   "main": "./lib/cjs/index.js",
