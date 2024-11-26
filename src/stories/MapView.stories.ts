@@ -143,7 +143,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     primary: true,
-    bingKey: "At_TFr8hNlThvFzAb11QIIVHCWa6B0RrvlZ2BbiE2TKi6DS9x4q_Y74iZHibnToj",
+    bingKey: "",
     mapType: 'grayscale',
     zoom: 1,
     centerLocation: [28.6448, 77.216721],
@@ -156,7 +156,7 @@ export const Primary: Story = {
 
 export const Map_View: Story = {
   args: {
-    bingKey: "At_TFr8hNlThvFzAb11QIIVHCWa6B0RrvlZ2BbiE2TKi6DS9x4q_Y74iZHibnToj",
+    bingKey: "",
     mapType: 'grayscale',
     zoom: 1,
     centerLocation: [28.6448, 77.216721],
