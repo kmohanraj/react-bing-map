@@ -1,4 +1,4 @@
-## React - Bing Maps
+## React - Bing Map
 
 
 ## Prerequisites
