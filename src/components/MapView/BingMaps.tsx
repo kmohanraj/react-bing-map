@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import useBingMaps from '../../hooks/useBingMaps';
 import { TMapView } from '../../type/component.type';
 // const logo: string = require("../assets/legend-f.svg");
 // import * as logo from 'logo.svg'
 // const logo = require("../../assets/legend-f.svg") as string;
 
-export const MapView = ({
-  mapType = '',
+export const BingMaps: FC<TMapView> = ({
+  mapType = 'grayscale',
   bingKey = '',
   centerLocation = [0, 0],
   language = 'en-IN',
@@ -21,7 +21,7 @@ export const MapView = ({
   showLocateMeButton = true,
   showZoomButtons = true,
   showMapTypeSelector = true
-}: TMapView) => {
+}) => {
 
   const mapView: TMapView = {
     mapType: mapType,
@@ -66,6 +66,6 @@ export const MapView = ({
         left: 0,
         right: 0
       }}
-    ></div>
+    />
   );
 };

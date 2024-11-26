@@ -1,4 +1,4 @@
-## React - Bing Map
+## React - Bing Maps
 
 
 ## Prerequisites
@@ -21,29 +21,29 @@ npm i react-bing-map
 
 Import the Bing Maps component
 
-```ts
-import MapView from "react-bing-map";
+```js
+import { BingMaps } from "react-bing-map";
 ```
 
 #### Customized Example:
 
-```ts
-<MapView
-  mapType = '',
-  bingKey = '',
-  centerLocation = [0, 0],
-  language = 'en-IN',
-  zoom = 0,
-  pushPins = [],
-  pushPinIcon = '',
-  showScalebar = true,
-  showCopyright = true,
-  showLogo = true,
-  disableZooming = false,
-  showBreadcrumb = true,
-  showLocateMeButton = true,
-  showZoomButtons = true,
-  showMapTypeSelector = true
+```js
+ <BingMaps
+  mapType=''
+  bingKey='key'
+  centerLocation={[28.6448, 77.216721]}
+  language={'en-IN'}
+  zoom ={0}
+  pushPins= {[]}
+  pushPinIcon=''
+  showScalebar={true}
+  showCopyright={true}
+  showLogo={true}
+  disableZooming={false}
+  showBreadcrumb={true}
+  showLocateMeButton={true}
+  showZoomButtons={true}
+  showMapTypeSelector={true}
 />
 ```
 
