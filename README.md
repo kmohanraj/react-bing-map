@@ -21,13 +21,13 @@ npm i react-bing-map
 
 Import the Bing Maps component
 
-```
+```ts
 import MapView from "react-bing-map";
 ```
 
 #### Customized Example:
 
-```
+```ts
 <MapView
   mapType = '',
   bingKey = '',
@@ -49,4 +49,4 @@ import MapView from "react-bing-map";
 
 #### Output:
 
-![screenshot](/output.png)
+![screenshot](/output1.png)
