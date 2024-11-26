@@ -1,4 +1,4 @@
-## React - Bing Maps
+## React - Bing Map
 
 
 ## Prerequisites
@@ -49,4 +49,4 @@ import { BingMaps } from "react-bing-map";
 
 #### Output:
 
-![screenshot](/output1.png)
+![screenshot](/output.png)

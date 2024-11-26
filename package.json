@@ -1,5 +1,5 @@
 {
-  "name": "react-bing-maps",
+  "name": "react-bing-map",
   "description": "",
   "author": {
     "name": "Mohanraj Kandasamy",
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/kmohanraj/react-bing-maps"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "license": "MIT",
   "main": "./lib/cjs/index.js",
