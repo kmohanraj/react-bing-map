@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { TPushPin, ContentType } from '../type/component.type';
+import { TPushPin, TContent } from '../type/component.type';
 
 const useBingMaps = ({
   mapType = '',
@@ -67,14 +67,14 @@ const useBingMaps = ({
   ) => {
     pushPins.forEach((item: TPushPin) => {
       let pin = new Maps.Pushpin(item.center, null);
-      const data: ContentType = item.content;
+      const data: TContent = item.content;
       handleOnInfoBox(center, data, infoBox, map, Maps, pin);
     });
   };
 
   const handleOnInfoBox = (
     center: any,
-    data: ContentType,
+    data: TContent,
     infoBox: any,
     map: any,
     Maps: any,

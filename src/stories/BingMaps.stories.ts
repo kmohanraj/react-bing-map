@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MapView } from '../components';
+import { BingMaps } from '../components';
 
 
 const pushpins = [
@@ -124,8 +124,8 @@ const pushpins = [
 ];
 
 const meta: any = {
-  title: 'Example/MapView',
-  component: MapView,
+  title: 'Example/BingMaps',
+  component: BingMaps,
   parameters: {
     layout: 'centered',
   },
@@ -135,7 +135,7 @@ const meta: any = {
     zoom: { control: { type: 'range', min: 1, max: 19 }},
     language: { control: 'select', options: ['en-IN', 'hi-IN']}
   },
-} satisfies Meta<typeof MapView>;
+} satisfies Meta<typeof BingMaps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

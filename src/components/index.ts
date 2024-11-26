@@ -1,1 +1,1 @@
-export { MapView } from './MapView/MapView';
+export { BingMaps } from './MapView/BingMaps';
