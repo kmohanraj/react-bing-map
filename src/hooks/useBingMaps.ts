@@ -1,13 +1,13 @@
-import { useCallback } from 'react';
-import { TPushPin, TContent } from '../type/component.type';
+import { useCallback } from "react";
+import { TPushPin, TContent } from "../type/component.type";
 
 const useBingMaps = ({
-  mapType = '',
-  bingKey = '',
+  mapType = "",
+  bingKey = "",
   centerLocation = [0, 0],
   zoom = 0,
   pushPins = [],
-  pushPinIcon = '',
+  pushPinIcon = "",
   showScalebar = true,
   showCopyright = true,
   showLogo = true,
@@ -15,30 +15,23 @@ const useBingMaps = ({
   showBreadcrumb = true,
   showLocateMeButton = true,
   showZoomButtons = true,
-  showMapTypeSelector = true
+  showMapTypeSelector = true,
+  mapPosition = { north: 49.234, south: 24.175, east: -65.573, west: -125.778 },
+  infoBoxStyle = { maxWidth: 600, maxHeight: 450 },
 }): [any, any] => {
-
-  const CONFIG = {
-    NORTH: 49.234,
-    SOUTH: 24.175,
-    EAST: -65.573,
-    WEST: -125.778,
-    ZOOM: 3
-  };
-
   let myWindow = window as any;
 
   const initMap = useCallback(() => {
     let Maps = myWindow.Microsoft.Maps;
     const center = new Maps.Location(centerLocation[0], centerLocation[1]);
-    let map = new Maps.Map('#bing-map', {
+    let map = new Maps.Map("#bing-map", {
       credentials: bingKey,
       center: center,
       bounds: Maps.LocationRect.fromEdges(
-        CONFIG.NORTH,
-        CONFIG.WEST,
-        CONFIG.SOUTH,
-        CONFIG.EAST
+        mapPosition.north,
+        mapPosition.west,
+        mapPosition.south,
+        mapPosition.east
       ),
       mapTypeId: Maps.MapTypeId[mapType],
       zoom: zoom,
@@ -49,43 +42,46 @@ const useBingMaps = ({
       showBreadcrumb: showBreadcrumb,
       showLocateMeButton: showLocateMeButton,
       showZoomButtons: showZoomButtons,
-      showMapTypeSelector: showMapTypeSelector
+      showMapTypeSelector: showMapTypeSelector,
     });
     let infoBox = new Maps.Infobox(map.getCenter(), {
-      visible: false
+      visible: false,
     });
     infoBox.setMap(map);
     addPushPins(center, infoBox, map, Maps, pushPins);
   }, [pushPins]);
 
   const addPushPins = (
-    center: any,
+    center: number[],
     infoBox: any,
     map: any,
     Maps: any,
-    pushPins: any
+    pushPins: TPushPin[]
   ) => {
-    pushPins.forEach((item: TPushPin) => {
-      let pin = new Maps.Pushpin(item.center, null);
+    pushPins?.forEach((item: TPushPin) => {
+      let pin = new Maps.Pushpin(item.location, {
+        icon: item.icon ? item.icon : pushPinIcon ,
+      });
       const data: TContent = item.content;
       handleOnInfoBox(center, data, infoBox, map, Maps, pin);
     });
   };
 
   const handleOnInfoBox = (
-    center: any,
+    center: number[],
     data: TContent,
     infoBox: any,
     map: any,
     Maps: any,
     pin: any
   ) => {
-    Maps.Events.addHandler(pin, 'click', (e: any) => {
+    Maps.Events.addHandler(pin, "click", (e: any) => {
       infoBox.setOptions({
         visible: true,
+        ...infoBoxStyle,
         location: e.target.getLocation(),
         title: data.title,
-        description: data.description.name
+        description: data.description,
       });
     });
     map.entities.push(pin);
@@ -94,15 +90,15 @@ const useBingMaps = ({
       center: center,
       zoom: zoom ? zoom : zoomLevel,
       padding: 100,
-      strokeOpacity: 0.6
+      strokeOpacity: 0.6,
     });
   };
 
   const getZoomLevel = (
-    radius: any,
-    latitude: any,
-    heightOfMapInPixels: any,
-    widthOfMapInPixels: any
+    radius: number,
+    latitude: number,
+    heightOfMapInPixels: number,
+    widthOfMapInPixels: number
   ) => {
     const range = radius * 1.6 * 1000;
     const limitBoundPixels = Math.min(heightOfMapInPixels, widthOfMapInPixels);

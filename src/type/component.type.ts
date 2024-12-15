@@ -1,27 +1,37 @@
 
-type TDescription = {
-  name: string;
-};
 
 export type TContent = {
   title: string;
-  description: TDescription;
+  description: HTMLElement | string;
 };
 
+export type TLocation = {
+   latitude: number; 
+   longitude: number
+};
+
+export type TMapPosition = { 
+  north: number,
+  south: number,
+  east: number,
+  west: number,
+}
+
 export type TPushPin = {
-  icon: string;
-  center: {};
+  icon: string | any;
+  location: TLocation;
   content: TContent;
 };
 
 export type TMapView = {
   mapType: string;
   bingKey: string;
+  mapPosition?: TMapPosition;
   centerLocation?: [number, number];
   language?: string;
   zoom?: number;
   pushPins?: [];
-  pushPinIcon?: any;
+  pushPinIcon?: string;
   showScalebar?: boolean;
   showCopyright?: boolean;
   showLogo?: boolean;
