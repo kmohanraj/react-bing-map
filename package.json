@@ -15,10 +15,6 @@
     "typescript",
     "react"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kmohanraj/react-bing-maps"
-  },
   "version": "1.0.5",
   "private": false,
   "license": "MIT",
