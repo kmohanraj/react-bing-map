@@ -7,11 +7,8 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "jsx": "react", 
     "module": "ESNext",  
-    "declaration": true,
-    "declarationDir": "lib",
     "rootDir": "src",
     "sourceMap": true,
-    "outDir": "lib",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   }
