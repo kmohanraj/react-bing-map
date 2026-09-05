@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "target": "ESNext",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "strict": true,                                      /* Enable all strict type-checking options. */
@@ -9,10 +9,10 @@
     "module": "ESNext",  
     "declaration": true,
     "declarationDir": "lib",
+    "rootDir": "src",
     "sourceMap": true,
     "outDir": "lib",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
   }
 }
