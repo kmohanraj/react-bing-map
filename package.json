@@ -1,6 +1,6 @@
 {
   "name": "react-bing-map",
-  "description": "",
+  "description": "React Bing Maps component with pushpins, route navigation, GPS current-location routing, distance, and route selection drawer.",
   "author": {
     "name": "Mohanraj Kandasamy",
     "email": "mohanksv.89@gmail.com",
@@ -12,53 +12,75 @@
     "bingmap",
     "bing map",
     "react bing map",
+    "bing maps route",
+    "bing maps gps",
+    "route navigation",
     "typescript",
     "react"
   ],
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "license": "MIT",
-  "main": "./lib/cjs/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmohanraj/react-bing-map.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kmohanraj/react-bing-map/issues"
+  },
+  "homepage": "https://github.com/kmohanraj/react-bing-map#readme",
+  "main": "./lib/cjs/index.cjs",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/esm/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.cjs"
+    }
+  },
+  "sideEffects": false,
   "files": [
-    "/lib"
+    "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c",
     "build:watch": "rollup -c --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepack": "npm run build"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.2",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-typescript": "^11.1.2",
-    "@storybook/addon-essentials": "^7.2.0",
-    "@storybook/addon-interactions": "^7.2.0",
-    "@storybook/addon-links": "^7.2.0",
-    "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.2.0",
-    "@storybook/react": "^7.2.0",
-    "@storybook/react-vite": "^7.2.0",
-    "@storybook/testing-library": "^0.2.0",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "node-sass": "^9.0.0",
-    "postcss": "^8.4.26",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^3.26.2",
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@storybook/addon-essentials": "^8.3.0",
+    "@storybook/addon-interactions": "^8.3.0",
+    "@storybook/addon-links": "^8.3.0",
+    "@storybook/addon-onboarding": "^8.3.0",
+    "@storybook/blocks": "^8.3.0",
+    "@storybook/react": "^8.3.0",
+    "@storybook/react-vite": "^8.3.0",
+    "@storybook/test": "^8.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.4.47",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rollup": "^4.21.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "sass": "^1.63.6",
-    "storybook": "^7.2.0",
-    "tslib": "^2.6.0",
-    "typescript": "^5.1.6"
+    "sass": "^1.77.8",
+    "storybook": "^8.3.0",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18",
-    "react-dom": "^16 || ^17 || ^18"
+    "react": "^16 || ^17 || ^18 || ^19",
+    "react-dom": "^16 || ^17 || ^18 || ^19"
   }
 }
